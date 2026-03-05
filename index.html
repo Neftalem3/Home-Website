@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuildForGood</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --lime: #c8f53a;
+      --orange: #ff5c1a;
+      --blue: #1a3cff;
+      --pink: #ff2d78;
+      --yellow: #ffe033;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.6; cursor: none; }
+
+    .cursor { width: 12px; height: 12px; background: var(--lime); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease, background 0.2s; transform: translate(-50%, -50%); }
+    .cursor-ring { width: 36px; height: 36px; border: 2px solid var(--lime); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: transform 0.35s ease; transform: translate(-50%, -50%); opacity: 0.5; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; mix-blend-mode: difference; }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; color: var(--white); text-decoration: none; }
+    .logo span { color: var(--lime); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s; cursor: none; }
+    .nav-links a:hover { opacity: 1; }
+
+    .page { display: none; min-height: 100vh; }
+    .page.active { display: block; }
+
+    /* HOME */
+    #home { position: relative; overflow: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 4rem; }
+    .bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,245,58,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,245,58,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; animation: float 8s ease-in-out infinite; }
+    .blob-1 { width: 500px; height: 500px; background: var(--blue); top: -100px; right: -100px; animation-delay: 0s; }
+    .blob-2 { width: 350px; height: 350px; background: var(--pink); bottom: -50px; left: 30%; animation-delay: 3s; }
+    .blob-3 { width: 250px; height: 250px; background: var(--orange); top: 40%; left: -80px; animation-delay: 5s; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-badge { display: inline-block; background: var(--lime); color: var(--black); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 2rem; animation: slideDown 0.6s ease both; }
+    h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 2rem; animation: slideUp 0.8s ease both 0.1s; }
+    h1 .accent-orange { color: var(--orange); }
+    h1 .accent-lime { color: var(--lime); }
+    .hero-sub { font-size: 1.15rem; font-weight: 300; max-width: 500px; opacity: 0.75; margin-bottom: 3rem; animation: slideUp 0.8s ease both 0.25s; }
+    .hero-ctas { display: flex; gap: 1rem; animation: slideUp 0.8s ease both 0.4s; }
+
+    .btn { display: inline-block; padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; border-radius: 3px; text-decoration: none; border: none; cursor: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+    .btn-lime { background: var(--lime); color: var(--black); }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: var(--white); }
+    .btn-orange { background: var(--orange); color: var(--white); }
+
+    .hero-stats { position: absolute; bottom: 3rem; right: 4rem; display: flex; gap: 3rem; animation: slideUp 0.8s ease both 0.55s; }
+    .stat-item { text-align: right; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--lime); line-height: 1; }
+    .stat-label { font-size: 0.8rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .services-strip { background: var(--lime); color: var(--black); padding: 1.2rem 4rem; display: flex; gap: 3rem; align-items: center; overflow: hidden; flex-wrap: wrap; }
+    .strip-item { display: flex; align-items: center; gap: 0.6rem; white-space: nowrap; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .strip-dot { width: 6px; height: 6px; background: var(--black); border-radius: 50%; }
+
+    .how-section { padding: 6rem 4rem; background: #111; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 3.5rem; max-width: 600px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; }
+    .step-card { background: #181818; padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+    .step-card:hover { background: #1e1e1e; }
+    .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .step-card:nth-child(1)::before { background: var(--lime); }
+    .step-card:nth-child(2)::before { background: var(--orange); }
+    .step-card:nth-child(3)::before { background: var(--blue); }
+    .step-card:nth-child(4)::before { background: var(--pink); }
+    .step-num { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; opacity: 0.08; line-height: 1; margin-bottom: 1rem; }
+    .step-title { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .step-desc { font-size: 0.9rem; opacity: 0.6; line-height: 1.6; }
+
+    /* ABOUT */
+    #about { padding: 10rem 4rem 6rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; margin-bottom: 6rem; }
+    .about-text p { font-size: 1.05rem; opacity: 0.75; margin-bottom: 1.2rem; line-height: 1.75; }
+    .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .about-card { border: 1.5px solid #222; padding: 1.8rem; border-radius: 4px; transition: border-color 0.3s, transform 0.3s; }
+    .about-card:hover { border-color: var(--lime); transform: translateX(6px); }
+    .about-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .about-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .about-card p { font-size: 0.88rem; opacity: 0.6; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+    .team-card { background: #111; padding: 2.5rem; border-radius: 4px; position: relative; overflow: hidden; }
+    .team-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--lime), var(--blue)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+    .team-card:hover::after { transform: scaleX(1); }
+    .team-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--pink)); margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; }
+    .team-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .team-role { font-size: 0.85rem; color: var(--lime); margin-bottom: 0.75rem; }
+    .team-bio { font-size: 0.88rem; opacity: 0.6; line-height: 1.6; }
+
+    /* PORTFOLIO */
+    #portfolio { padding: 10rem 4rem 6rem; }
+    .portfolio-filter { display: flex; gap: 0.6rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .filter-btn { padding: 0.5rem 1.2rem; background: transparent; border: 1.5px solid #333; color: var(--white); border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: none; transition: all 0.2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--lime); color: var(--black); border-color: var(--lime); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; }
+    .portfolio-empty { grid-column: 1 / -1; text-align: center; padding: 5rem 2rem; border: 2px dashed #222; border-radius: 4px; }
+    .portfolio-empty h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .portfolio-empty p { opacity: 0.5; font-size: 0.95rem; }
+    .empty-icon { font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.3; }
+
+    /* CONTACT */
+    #contact { padding: 10rem 4rem 6rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+    .contact-info h2 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .contact-info p { opacity: 0.65; margin-bottom: 2.5rem; line-height: 1.75; }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: 0.95rem; }
+    .contact-icon { width: 40px; height: 40px; border: 1.5px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; }
+    .form-group input, .form-group select, .form-group textarea { background: #111; border: 1.5px solid #222; color: var(--white); padding: 0.9rem 1.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; border-radius: 3px; outline: none; transition: border-color 0.2s; cursor: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--lime); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-group select option { background: #111; }
+    .form-submit { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+    .form-note { font-size: 0.8rem; opacity: 0.4; }
+    .form-success { display: none; background: rgba(200,245,58,0.1); border: 1.5px solid var(--lime); padding: 1.2rem 1.5rem; border-radius: 3px; color: var(--lime); font-size: 0.95rem; margin-top: 1rem; }
+
+    footer { border-top: 1px solid #1a1a1a; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.4; }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      #home, .how-section, #about, #portfolio, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .services-strip { padding: 1rem 1.5rem; gap: 1.5rem; }
+      h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { right: 1.5rem; bottom: 2rem; gap: 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="#" class="logo" onclick="showPage('home');return false;">Build<span>For</span>Good</a>
+    <ul class="nav-links">
+      <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('about')">About</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('portfolio')">Portfolio</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <div id="home" class="page active">
+    <section style="position:relative; overflow:hidden; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding: 0 4rem;">
+      <div class="bg-grid"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="hero-content">
+        <div class="hero-badge">✦ Open for new projects</div>
+        <h1>We build sites<br>for <span class="accent-orange">good</span><br><span class="accent-lime">causes.</span></h1>
+        <p class="hero-sub">Two college students crafting fast, beautiful websites for non-profits and clubs — at prices that actually make sense.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-lime" onclick="showPage('contact');return false;">Start a project</a>
+          <a href="#" class="btn btn-outline" onclick="showPage('portfolio');return false;">See our work</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Mission-driven</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Builders</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="services-strip">
+      <div class="strip-item"><span class="strip-dot"></span> Non-profits</div>
+      <div class="strip-item"><span class="strip-dot"></span> Student Clubs</div>
+      <div class="strip-item"><span class="strip-dot"></span> Community Orgs</div>
+      <div class="strip-item"><span class="strip-dot"></span> Local Charities</div>
+      <div class="strip-item"><span class="strip-dot"></span> Campus Groups</div>
+      <div class="strip-item"><span class="strip-dot"></span> Youth Programs</div>
+    </div>
+
+    <section class="how-section">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">From idea to live site — fast.</h2>
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-num">01</div>
+          <div class="step-title">You reach out</div>
+          <p class="step-desc">Tell us about your org, what you need, and when you need it. No complicated forms.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-num">02</div>
+          <div class="step-title">We plan together</div>
+          <p class="step-desc">A quick call to understand your mission, goals, and visual identity. We take it from there.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-num">03</div>
+          <div class="step-title">We build it</div>
+          <p class="step-desc">Clean code, fast load times, mobile-friendly. You get updates throughout the process.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-num">04</div>
+          <div class="step-title">You go live</div>
+          <p class="step-desc">We deploy to Vercel, hand you the keys, and you're online. We stay available for questions.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="page">
+    <section>
+      <p class="section-label">Who we are</p>
+      <h2 class="section-title">Two builders, one mission.</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>We're two college students who love building things on the web. We noticed that a lot of non-profits and student clubs either have no website at all, or one that hasn't been touched since 2011.</p>
+          <p>We started BuildForGood to fix that. We use modern tools to build fast, clean websites that help organizations actually get found, get donations, and get members.</p>
+          <p>We're not an agency. We're two people who care about this stuff — which means you get real attention, fast communication, and a site you'll actually be proud of.</p>
+          <a href="#" class="btn btn-orange" onclick="showPage('contact');return false;" style="margin-top:1rem; display:inline-block;">Work with us</a>
+        </div>
+        <div class="about-cards">
+          <div class="about-card fade-in">
+            <div class="about-card-icon">⚡</div>
+            <h3>Fast turnaround</h3>
+            <p>Most sites done in 1–2 weeks. We move quickly so you don't have to wait months.</p>
+          </div>
+          <div class="about-card fade-in">
+            <div class="about-card-icon">💸</div>
+            <h3>Honest pricing</h3>
+            <p>We work with your budget. Many of our first projects are free or very low cost.</p>
+          </div>
+          <div class="about-card fade-in">
+            <div class="about-card-icon">📱</div>
+            <h3>Mobile-first</h3>
+            <p>Every site we build looks great on phones, tablets, and desktops.</p>
+          </div>
+          <div class="about-card fade-in">
+            <div class="about-card-icon">🤝</div>
+            <h3>Real support</h3>
+            <p>We're students too — we answer fast and actually care about your project.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">The team</p>
+        <h2 class="section-title">Meet the builders.</h2>
+        <div class="team-grid">
+          <div class="team-card fade-in">
+            <div class="team-avatar">
+              <img src="Nef'sheadshot.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"/>
+            </div>
+            <div class="team-name">Neftalem Sida</div>
+            <div class="team-role">Founder & Developer</div>
+            <p class="team-bio">Studying Computer Science and Business Leadership and Management at University of St. Thomas. Passionate about using tech for community impact and for the common good. </p>
+          </div>
+          <div class="team-card fade-in">
+            <div class="team-avatar">F</div>
+            <div class="team-name">Friend's Name</div>
+            <div class="team-role">Co-founder & Developer</div>
+            <p class="team-bio">Studying [major] at [school]. </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div id="portfolio" class="page">
+    <section>
+      <p class="section-label">Our work</p>
+      <h2 class="section-title">Sites we've built.</h2>
+      <div class="portfolio-filter">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Non-profit</button>
+        <button class="filter-btn">Student Club</button>
+        <button class="filter-btn">Community</button>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-empty fade-in">
+          <div class="empty-icon">🚀</div>
+          <h3>Projects coming soon.</h3>
+          <p>We're just getting started. Our first projects are underway —<br>check back soon to see what we've built.</p>
+          <a href="#" class="btn btn-lime" onclick="showPage('contact');return false;" style="margin-top:1.5rem; display:inline-block;">Be our first client</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="page">
+    <section>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-label">Get in touch</p>
+          <h2>Let's build something good.</h2>
+          <p>Have a non-profit, club, or community organization that needs a website? We'd love to hear from you. Fill out the form and we'll get back to you within 24 hours.</p>
+          <div class="contact-detail">
+            <span>hello@buildforgood.com</span>
+          </div>
+          <div class="contact-detail">
+
+            <span>Based at University of St. Thomas</span>
+          </div>
+          <div class="contact-detail">
+            <span>We reply within 24 hours</span>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form" id="contactForm">
+            <input type="hidden" name="access_key" value="16696190-0afc-4319-8cd7-260bec9c8712"/>
+            <input type="hidden" name="subject" value="New project inquiry — BuildForGood"/>
+            <input type="checkbox" name="botcheck" style="display:none"/>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First name</label>
+                <input type="text" name="first_name" placeholder="Jane" required/>
+              </div>
+              <div class="form-group">
+                <label>Last name</label>
+                <input type="text" name="last_name" placeholder="Smith" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="jane@yourorg.org" required/>
+            </div>
+            <div class="form-group">
+              <label>Organization name</label>
+              <input type="text" name="organization" placeholder="Your Non-profit or Club" required/>
+            </div>
+            <div class="form-group">
+              <label>Type of organization</label>
+              <select name="org_type">
+                <option value="">Select one...</option>
+                <option>Non-profit</option>
+                <option>Student club</option>
+                <option>Community organization</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell us about your project</label>
+              <textarea name="message" placeholder="What do you need? What's your timeline? Any design ideas?" required></textarea>
+            </div>
+            <div class="form-submit">
+              <span class="form-note">We'll reply within 24 hours.</span>
+              <button type="submit" class="btn btn-lime">Send message →</button>
+            </div>
+          </form>
+          <div class="form-success" id="formSuccess">✓ Message sent! We'll be in touch within 24 hours.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span>© 2026 BuildForGood</span>
+    <span>Built by two students.</span>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 80);
+    });
+
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(observeFadeIns, 100);
+    }
+
+    function observeFadeIns() {
+      const els = document.querySelectorAll('.fade-in:not(.visible)');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+      }, { threshold: 0.1 });
+      els.forEach(el => observer.observe(el));
+    }
+    observeFadeIns();
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+        const json = await res.json();
+        if (json.success) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.textContent = 'Something went wrong. Try again.';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Error. Try again.';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
