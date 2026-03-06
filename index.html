@@ -287,8 +287,7 @@
           <p>We're two college students who love building things on the web. We noticed that a lot of non-profits and student clubs either have no website at all, or one that hasn't been touched since 2011.</p>
           <p>We started BuildForGood to fix that. We use modern tools to build fast, clean websites that help organizations actually get found, get donations, and get members.</p>
           <p>We're not an agency. We're two people who care about this stuff — which means you get real attention, fast communication, and a site you'll actually be proud of.</p>
-          <a href="#contact" class="btn btn-orange" onclick="navTo('contact')" style="margin-top:1rem; display:inline-block;">Work with us</a>
-        </div>
+          <a href="#contact" class="btn btn-orange" onclick="navTo('contact', true)" style="margin-top:1rem; display:inline-block;">Work with us</a>        </div>
         <div class="about-cards">
           <div class="about-card fade-in">
             <h3>Fast turnaround</h3>
@@ -429,15 +428,21 @@
       document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
     });
 
-    function navTo(id) {
-      hamburger.classList.remove('open');
-      mobileNav.classList.remove('open');
-      document.body.style.overflow = '';
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    function navTo(id, scrollToForm = false) {
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  setTimeout(() => {
+    if (scrollToForm) {
+      document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(observeFadeIns, 100);
     }
+    observeFadeIns();
+  }, 100);
+}
 
     function observeFadeIns() {
       const els = document.querySelectorAll('.fade-in:not(.visible)');
