@@ -136,15 +136,25 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
-      nav { padding: 1.2rem 1.5rem; }
-      #home, .how-section, #about, #portfolio, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .services-strip { padding: 1rem 1.5rem; gap: 1.5rem; }
-      h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-stats { right: 1.5rem; bottom: 2rem; gap: 1.5rem; }
-      .nav-links { gap: 1.2rem; }
-    }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.75rem; }
+  h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+  #home { padding: 0 1.5rem; }
+  .how-section, #about, #portfolio, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .services-strip { padding: 1rem 1.5rem; gap: 1.5rem; }
+  .hero-stats { position: static; margin-top: 2rem; justify-content: flex-start; gap: 2rem; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; }
+  .btn { text-align: center; }
+}
+
+@media (hover: none) {
+  .cursor, .cursor-ring { display: none; }
+  body { cursor: auto; }
+  a, button { cursor: pointer; }
+}
   </style>
 </head>
 <body>
@@ -227,7 +237,7 @@
   </div>
 
   <!-- ABOUT -->
-  <div id="about" >
+  <div id="about" class="page">
     <section>
       <p class="section-label">Who we are</p>
       <h2 class="section-title">Two builders, one mission.</h2>
@@ -259,7 +269,7 @@
         <div class="team-grid">
           <div class="team-card fade-in">
             <div class="team-avatar">
-              <img src="Nef'sheadshot.jpg" alt="Neftalem Sida" style="width:100%; height:100%; object-fit:cover;"/>
+              <img src="Nefsheadshot.jpg" alt="Neftalem Sida" style="width:100%; height:100%; object-fit:cover;"/>
             </div>
             <div class="team-name">Neftalem Sida</div>
             <div class="team-role">Founder & Developer</div>
@@ -277,7 +287,7 @@
   </div>
 
   <!-- PORTFOLIO -->
-  <div id="portfolio" >
+  <div id="portfolio" class="page">
     <section>
       <p class="section-label">Our work</p>
       <h2 class="section-title">Sites we've built.</h2>
@@ -298,7 +308,7 @@
   </div>
 
   <!-- CONTACT -->
-  <div id="contact">
+  <div id="contact" class="page">
     <section>
       <div class="contact-grid">
         <div class="contact-info">
