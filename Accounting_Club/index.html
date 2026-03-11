@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- REPLACE: Update the page <title> with your club's real name -->
+    <title>Accounting Club</title>
+
+    <!-- Meta description for SEO — REPLACE with a real description -->
+    <meta name="description"
+        content="Welcome to the Accounting Club. Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+
+    <!-- Google Fonts: Inter (body) + Merriweather (headings). Replace in CSS --font-* variables if desired. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ============================================================
+         NAVIGATION BAR
+         - REPLACE: Club name in the .nav-logo anchor
+         - REPLACE: href values to match actual section IDs
+    ============================================================ -->
+    <nav class="navbar" id="top">
+        <div class="container nav-inner">
+            <!-- Logo image: save your logo file as logo.png in the project folder -->
+            <a href="#hero" class="nav-logo">
+                <img src="Logo.jpg" alt="UST Accounting Club logo" class="nav-logo-img" />
+            </a>
+
+            <!-- Hamburger toggle for mobile -->
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#committee">Leadership</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#join">Join</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         HERO SECTION
+         - REPLACE: h1 text with club name
+         - REPLACE: <p> text with real mission statement
+         - REPLACE: hero background image in style.css .hero (optional)
+         - REPLACE: "Join Now" href if you want it to point elsewhere
+    ============================================================ -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <!-- REPLACE: Main club name headline -->
+            <h1 class="hero-title">UST Accounting Club</h1>
+
+            <!-- REPLACE: tagline / short subtitle -->
+            <p class="hero-tagline">Empowering future accountants at the University of St. Thomas</p>
+
+            <!-- REPLACE: Mission statement paragraph (2–3 sentences recommended) -->
+            <p class="hero-mission">
+                Interested in Accounting? Whether you're a freshman just starting to explore the field
+                or a senior preparing to launch your career, the St. Thomas Accounting Club is here
+                to support you every step of the way.<br /><br />
+                From explore events and info sessions designed for underclassmen to networking
+                opportunities, Big 4 panels, and recruiting prep for juniors and seniors, our events
+                are tailored to help you build confidence, connections, and clarity in your future.
+            </p>
+
+            <div class="hero-actions">
+                <!-- REPLACE: Primary CTA link -->
+                <a href="#join" class="btn btn-primary">Join Now</a>
+                <!-- REPLACE: Secondary CTA link (e.g., link to about / events) -->
+                <a href="#events" class="btn btn-outline">See Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         COMMITTEE / LEADERSHIP SECTION
+         - REPLACE: Section heading
+         - REPLACE: Each card's img src, alt, name, role, and LinkedIn href
+         - Add or remove <div class="card"> blocks as needed (4–6 recommended)
+    ============================================================ -->
+    <section class="section committee" id="committee">
+        <div class="container">
+            <!-- REPLACE: Section heading -->
+            <h2 class="section-title">Our Leadership</h2>
+            <!-- REPLACE: Optional subtitle -->
+            <p class="section-subtitle">Meet the dedicated team driving our club forward this academic year.</p>
+
+            <!-- Leadership cards: 3 columns × 2 rows -->
+            <div class="cards-grid">
+
+                <!-- ── CARD 1: Vice President ─────────────── -->
+                <article class="card">
+                    <img src="Vice_president.jpg" alt="Hudson Hatfield - Vice President" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-name">Hudson Hatfield</h3>
+                        <p class="card-role">Vice President</p>
+                        <a href="https://www.linkedin.com/in/hudson-hatfield/" class="card-linkedin" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ── CARD 2: President ──────────────────── -->
+                <article class="card">
+                    <img src="President.jpg" alt="Nour Issa - President" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-name">Nour Issa</h3>
+                        <p class="card-role">President</p>
+                        <a href="https://www.linkedin.com/in/nour-issa1/" class="card-linkedin" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ── CARD 3: Advisor — row 1, col 3 ─────── -->
+                <article class="card">
+                    <img src="Advisor.jpg" alt="Kimberli Ishaug - Advisor" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-name">Kimberli Ishaug</h3>
+                        <p class="card-role">Advisor</p>
+                        <a href="https://www.linkedin.com/in/kimberli-ishaug-4b53639/" class="card-linkedin"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ── CARD 4: Treasurer — row 2, col 1 ───── -->
+                <article class="card">
+                    <img src="Treasurer.jpg" alt="Jackson Prange - Treasurer" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-name">Jackson Prange</h3>
+                        <p class="card-role">Treasurer</p>
+                        <a href="https://www.linkedin.com/in/jackson-prange/" class="card-linkedin" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ── CARD 5: Administrator (directly below President) ── -->
+                <article class="card">
+                    <img src="Administrator.jpg" alt="Harleen Kaur - Administrator" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-name">Harleen Kaur</h3>
+                        <p class="card-role">Administrator</p>
+                        <a href="https://www.linkedin.com/in/harleen-kaur-89b3502ba/" class="card-linkedin"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ── CARD 6: Marketing Socials Coordinator — row 2, col 3 ── -->
+                <article class="card">
+                    <img src="Marketting_Socials_Coordianator.jpg"
+                        alt="Stephanie Fearing - Marketing Socials Coordinator" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-name">Stephanie Fearing</h3>
+                        <p class="card-role">Marketing Socials Coordinator</p>
+                        <a href="https://www.linkedin.com/in/stephanie-fearing-722630281/" class="card-linkedin"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+
+            </div><!-- /cards-grid -->
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PHOTO GALLERY SECTION
+         - REPLACE: Each img src with real event/club photos
+         - REPLACE: alt text on each image with a meaningful description
+         - Add or remove <img> tags as needed
+    ============================================================ -->
+    <section class="section gallery bg-muted" id="gallery">
+        <div class="container">
+            <!-- REPLACE: Section heading -->
+            <h2 class="section-title">Photo Gallery</h2>
+            <!-- REPLACE: Optional subtitle -->
+            <p class="section-subtitle">A look at our events, meetings, and community throughout the year.</p>
+
+            <div class="gallery-grid">
+                <!-- REPLACE: img src and alt for each gallery photo -->
+                <img src="https://placehold.co/800x600" alt="Club event photo 1"
+                    class="gallery-img gallery-img--wide" />
+                <img src="https://placehold.co/400x400" alt="Club event photo 2" class="gallery-img" />
+                <img src="https://placehold.co/400x600" alt="Club event photo 3"
+                    class="gallery-img gallery-img--tall" />
+                <img src="https://placehold.co/600x400" alt="Club event photo 4" class="gallery-img" />
+                <img src="https://placehold.co/400x400" alt="Club event photo 5" class="gallery-img" />
+                <img src="https://placehold.co/800x400" alt="Club event photo 6"
+                    class="gallery-img gallery-img--wide" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PREVIOUS EVENTS SECTION
+         - REPLACE: Each event's img src, date, title, and description
+         - Add or remove <article class="event-card"> blocks as needed
+    ============================================================ -->
+    <section class="section events" id="events">
+        <div class="container">
+            <!-- REPLACE: Section heading -->
+            <h2 class="section-title">Previous Events</h2>
+            <!-- REPLACE: Optional subtitle -->
+            <p class="section-subtitle">Highlights from our past meetings, networking sessions, and firm visits.</p>
+
+            <div class="events-list">
+
+                <!-- ── EVENT 1 ───────────────────────────────── -->
+                <article class="event-card">
+                    <!-- REPLACE: Event banner image (recommended 800×400), alt text -->
+                    <img src="https://placehold.co/800x400" alt="Fall Kickoff Meeting banner" class="event-img" />
+                    <div class="event-body">
+                        <!-- REPLACE: Event date (use a <time> element for semantics) -->
+                        <time class="event-date" datetime="2024-09-15">September 15, 2024</time>
+                        <!-- REPLACE: Event title -->
+                        <h3 class="event-title">Fall Kickoff Meeting</h3>
+                        <!-- REPLACE: Short event description (2–3 sentences) -->
+                        <p class="event-desc">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium,
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ── EVENT 2 ───────────────────────────────── -->
+                <article class="event-card">
+                    <!-- REPLACE: Event banner image, alt text -->
+                    <img src="https://placehold.co/800x400" alt="Big Four Firm Panel banner" class="event-img" />
+                    <div class="event-body">
+                        <!-- REPLACE: Event date -->
+                        <time class="event-date" datetime="2024-10-22">October 22, 2024</time>
+                        <!-- REPLACE: Event title -->
+                        <h3 class="event-title">Big Four Firm Panel</h3>
+                        <!-- REPLACE: Event description -->
+                        <p class="event-desc">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                            sed quia consequuntur magni dolores eos qui ratione sequi nesciunt.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ── EVENT 3 ───────────────────────────────── -->
+                <article class="event-card">
+                    <!-- REPLACE: Event banner image, alt text -->
+                    <img src="https://placehold.co/800x400" alt="CPA Licensure Workshop banner" class="event-img" />
+                    <div class="event-body">
+                        <!-- REPLACE: Event date -->
+                        <time class="event-date" datetime="2024-11-08">November 8, 2024</time>
+                        <!-- REPLACE: Event title -->
+                        <h3 class="event-title">CPA Licensure Workshop</h3>
+                        <!-- REPLACE: Event description -->
+                        <p class="event-desc">
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                            nisi ut aliquid ex ea commodi consequatur vel eum dolore.
+                        </p>
+                    </div>
+                </article>
+
+            </div><!-- /events-list -->
+        </div>
+    </section>
+
+    <!-- ============================================================
+         HOW TO JOIN SECTION
+         - REPLACE: Section heading
+         - REPLACE: Each step's icon character, title, and description
+    ============================================================ -->
+    <section class="section join bg-muted" id="join">
+        <div class="container">
+            <!-- REPLACE: Section heading -->
+            <h2 class="section-title">How to Join</h2>
+            <!-- REPLACE: Optional subtitle -->
+            <p class="section-subtitle">Becoming a member is easy — just follow these steps.</p>
+
+            <div class="steps-grid">
+
+                <!-- ── STEP 1: TommieLink ───────────────────── -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <!-- TommieLink / UST logo -->
+                        <img src="Logo.jpg" alt="UST TommieLink logo" class="step-logo-img" />
+                    </div>
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Join on TommieLink</h3>
+                    <p class="step-desc">
+                        Visit our TommieLink page, scroll down, and click the
+                        <strong>Join</strong> button to become an official member.
+                        You can also find and RSVP to upcoming club events right there.
+                    </p>
+                    <a href="https://tommielink.stthomas.edu/organization/accounting"
+                       class="btn btn-primary step-link-btn"
+                       target="_blank" rel="noopener noreferrer">Go to TommieLink</a>
+                </div>
+
+                <!-- ── STEP 2: Follow Socials ───────────────────── -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <!-- Instagram SVG icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="step-insta-icon" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Follow Our Socials</h3>
+                    <p class="step-desc">
+                        Keep up with current events, recruiting tips, and club updates
+                        by checking out our social media pages.
+                    </p>
+                    <a href="#footer-socials" class="btn btn-primary step-link-btn">View Socials</a>
+                </div>
+
+            </div><!-- /steps-grid -->
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER & CONTACT FORM SECTION
+         - REPLACE: club address, email
+         - REPLACE: Social media href values with real profile URLs
+         NOTE: Form uses mailto — opens the user's default email client.
+               No third-party service required.
+    ============================================================ -->
+    <footer class="footer" id="contact">
+        <div class="container footer-inner">
+
+            <!-- Contact Form column -->
+            <div class="footer-form-col">
+                <h3 class="footer-heading">Get in Touch</h3>
+
+                <!-- mailto form: collects fields then opens default email client -->
+                <form class="contact-form" id="contact-form">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Jane Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" name="email" placeholder="jane@example.com"
+                                required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-major">Major</label>
+                        <input type="text" id="contact-major" name="major" placeholder="Accounting" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Your message here…"
+                            required></textarea>
+                    </div>
+
+                    <!-- Inline feedback shown after submission -->
+                    <div id="form-status" class="form-status" aria-live="polite" hidden></div>
+
+                    <button type="submit" class="btn btn-primary" id="form-submit-btn">Send Message</button>
+
+                </form>
+            </div><!-- /footer-form-col -->
+
+            <!-- Info & Socials column -->
+            <div class="footer-info-col">
+                <!-- Club logo + name in footer -->
+                <div class="footer-logo-wrap">
+                    <img src="Logo.jpg" alt="UST Accounting Club logo" class="footer-logo-img" />
+                </div>
+
+                <!-- REPLACE: Address and contact details -->
+                <address class="footer-address">
+                    University of St. Thomas<br />
+                    2115 Summit Ave<br />
+                    St. Paul, MN 55105<br /><br />
+                    <!-- REPLACE: Club email -->
+                    <a href="mailto:accountingclub@stthomas.edu">accountingclub@stthomas.edu</a>
+                </address>
+
+                <p class="footer-socials-label">Follow Us</p>
+                <div class="footer-socials" id="footer-socials">
+                    <!-- LinkedIn: UST Accounting Club group -->
+                    <a href="https://www.linkedin.com/groups/4947473/" class="social-btn" aria-label="LinkedIn"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path
+                                d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.344V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.979-1.981 1.98 1.98 0 0 1 3.96 0 1.98 1.98 0 0 1-1.981 1.981zm1.992 13.019H3.344V9h3.985v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <!-- Instagram: @ustaccountingclub -->
+                    <a href="https://www.instagram.com/ustaccountingclub/" class="social-btn" aria-label="Instagram"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415a4.49 4.49 0 0 1 1.635 1.065 4.49 4.49 0 0 1 1.065 1.635c.166.422.361 1.057.415 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.415 2.227a4.736 4.736 0 0 1-2.7 2.7c-.422.166-1.057.361-2.227.415-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.415a4.736 4.736 0 0 1-2.7-2.7c-.166-.422-.361-1.057-.415-2.227C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.249-1.805.415-2.227a4.49 4.49 0 0 1 1.065-1.635A4.49 4.49 0 0 1 5.348 2.578c.422-.166 1.057-.361 2.227-.415C8.841 2.175 9.221 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.775.131 4.903.333 4.14.63a6.656 6.656 0 0 0-2.403 1.564A6.656 6.656 0 0 0 .63 4.14C.333 4.903.131 5.775.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.059 1.277.261 2.15.558 2.913a6.656 6.656 0 0 0 1.564 2.403 6.656 6.656 0 0 0 2.403 1.564c.763.297 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 1.277-.059 2.15-.261 2.913-.558a6.924 6.924 0 0 0 3.967-3.967c.297-.763.499-1.636.558-2.913.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.059-1.277-.261-2.15-.558-2.913a6.656 6.656 0 0 0-1.564-2.403A6.656 6.656 0 0 0 19.86.63C19.097.333 18.224.131 16.947.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                        </svg>
+                    </a>
+                    <!-- Facebook: UST Accounting Club -->
+                    <a href="https://www.facebook.com/USTAccountingClub/" class="social-btn" aria-label="Facebook"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path
+                                d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+                        </svg>
+                    </a>
+                </div>
+            </div><!-- /footer-info-col -->
+
+        </div><!-- /footer-inner -->
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <p>
+                <!-- REPLACE: Year and club name -->
+                &copy; 2025 UST Accounting Club. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         NAVIGATION TOGGLE SCRIPT
+         Handles the mobile hamburger menu open/close.
+         No external dependencies — vanilla JS only.
+    ============================================================ -->
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        toggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close nav when a link is clicked (smooth UX on mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+
+    <!-- ============================================================
+         CONTACT FORM — MAILTO SUBMISSION (no third-party service)
+         Collects form fields, builds a pre-filled mailto: link, and
+         opens the user's default email client addressed to the club.
+         The club email address is set in the CLUB_EMAIL constant below.
+    ============================================================ -->
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const formStatus  = document.getElementById('form-status');
+        const submitBtn   = document.getElementById('form-submit-btn');
+
+        // ── REPLACE: set the club's receiving email address here ──
+        const CLUB_EMAIL = 'accountingclub@stthomas.edu';
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const name    = document.getElementById('contact-name').value.trim();
+                const email   = document.getElementById('contact-email').value.trim();
+                const major   = document.getElementById('contact-major').value.trim();
+                const message = document.getElementById('contact-message').value.trim();
+
+                // Build the email subject and body
+                const subject = `New Member Inquiry – ${name}`;
+                const body =
+                    `From: ${name}\n` +
+                    `Email: ${email}\n` +
+                    `Major: ${major}\n\n` +
+                    `Message:\n${message}`;
+
+                // Encode and open the default mail client
+                const mailtoLink =
+                    `mailto:${CLUB_EMAIL}` +
+                    `?subject=${encodeURIComponent(subject)}` +
+                    `&body=${encodeURIComponent(body)}`;
+
+                window.location.href = mailtoLink;
+
+                // Show confirmation and reset the form
+                formStatus.textContent = '✓ Your email client has been opened. Please send the message from there.';
+                formStatus.className = 'form-status form-status--success';
+                formStatus.hidden = false;
+                contactForm.reset();
+            });
+        }
+    </script>
+
+</body>
+
+</html>
